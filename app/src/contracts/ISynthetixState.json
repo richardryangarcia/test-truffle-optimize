@@ -1,0 +1,1503 @@
+{
+  "contractName": "ISynthetixState",
+  "abi": [
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "debtLedger",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "name": "issuanceData",
+      "outputs": [
+        {
+          "name": "initialDebtOwnership",
+          "type": "uint256"
+        },
+        {
+          "name": "debtEntryIndex",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "issuanceRatio",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "debtLedgerLength",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "account",
+          "type": "address"
+        }
+      ],
+      "name": "hasIssued",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [],
+      "name": "incrementTotalIssuerCount",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [],
+      "name": "decrementTotalIssuerCount",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "account",
+          "type": "address"
+        },
+        {
+          "name": "initialDebtOwnership",
+          "type": "uint256"
+        }
+      ],
+      "name": "setCurrentIssuanceData",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "lastDebtLedgerEntry",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "value",
+          "type": "uint256"
+        }
+      ],
+      "name": "appendDebtLedgerValue",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "account",
+          "type": "address"
+        }
+      ],
+      "name": "clearIssuanceData",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "pragma solidity 0.4.25;\n\ncontract ISynthetixState {\n    // A struct for handing values associated with an individual user's debt position\n    struct IssuanceData {\n        // Percentage of the total debt owned at the time\n        // of issuance. This number is modified by the global debt\n        // delta array. You can figure out a user's exit price and\n        // collateralisation ratio using a combination of their initial\n        // debt and the slice of global debt delta which applies to them.\n        uint initialDebtOwnership;\n        // This lets us know when (in relative terms) the user entered\n        // the debt pool so we can calculate their exit price and\n        // collateralistion ratio\n        uint debtEntryIndex;\n    }\n\n    uint[] public debtLedger;\n    uint public issuanceRatio;\n    mapping(address => IssuanceData) public issuanceData;\n\n    function debtLedgerLength() external view returns (uint);\n    function hasIssued(address account) external view returns (bool);\n    function incrementTotalIssuerCount() external;\n    function decrementTotalIssuerCount() external;\n    function setCurrentIssuanceData(address account, uint initialDebtOwnership) external;\n    function lastDebtLedgerEntry() external view returns (uint);\n    function appendDebtLedgerValue(uint value) external;\n    function clearIssuanceData(address account) external;\n}\n",
+  "sourcePath": "/Users/hz/workspace/synthetix/contracts/interfaces/ISynthetixState.sol",
+  "ast": {
+    "absolutePath": "/Users/hz/workspace/synthetix/contracts/interfaces/ISynthetixState.sol",
+    "exportedSymbols": {
+      "ISynthetixState": [
+        12837
+      ]
+    },
+    "id": 12838,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 12782,
+        "literals": [
+          "solidity",
+          "0.4",
+          ".25"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:37"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": false,
+        "id": 12837,
+        "linearizedBaseContracts": [
+          12837
+        ],
+        "name": "ISynthetixState",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "canonicalName": "ISynthetixState.IssuanceData",
+            "id": 12787,
+            "members": [
+              {
+                "constant": false,
+                "id": 12784,
+                "name": "initialDebtOwnership",
+                "nodeType": "VariableDeclaration",
+                "scope": 12787,
+                "src": "510:25:37",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 12783,
+                  "name": "uint",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "510:4:37",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 12786,
+                "name": "debtEntryIndex",
+                "nodeType": "VariableDeclaration",
+                "scope": 12787,
+                "src": "716:19:37",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 12785,
+                  "name": "uint",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "716:4:37",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "name": "IssuanceData",
+            "nodeType": "StructDefinition",
+            "scope": 12837,
+            "src": "142:600:37",
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "id": 12790,
+            "name": "debtLedger",
+            "nodeType": "VariableDeclaration",
+            "scope": 12837,
+            "src": "748:24:37",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_array$_t_uint256_$dyn_storage",
+              "typeString": "uint256[]"
+            },
+            "typeName": {
+              "baseType": {
+                "id": 12788,
+                "name": "uint",
+                "nodeType": "ElementaryTypeName",
+                "src": "748:4:37",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                }
+              },
+              "id": 12789,
+              "length": null,
+              "nodeType": "ArrayTypeName",
+              "src": "748:6:37",
+              "typeDescriptions": {
+                "typeIdentifier": "t_array$_t_uint256_$dyn_storage_ptr",
+                "typeString": "uint256[]"
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "id": 12792,
+            "name": "issuanceRatio",
+            "nodeType": "VariableDeclaration",
+            "scope": 12837,
+            "src": "778:25:37",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint256",
+              "typeString": "uint256"
+            },
+            "typeName": {
+              "id": 12791,
+              "name": "uint",
+              "nodeType": "ElementaryTypeName",
+              "src": "778:4:37",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint256",
+                "typeString": "uint256"
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "id": 12796,
+            "name": "issuanceData",
+            "nodeType": "VariableDeclaration",
+            "scope": 12837,
+            "src": "809:52:37",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_mapping$_t_address_$_t_struct$_IssuanceData_$12787_storage_$",
+              "typeString": "mapping(address => struct ISynthetixState.IssuanceData)"
+            },
+            "typeName": {
+              "id": 12795,
+              "keyType": {
+                "id": 12793,
+                "name": "address",
+                "nodeType": "ElementaryTypeName",
+                "src": "817:7:37",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                }
+              },
+              "nodeType": "Mapping",
+              "src": "809:32:37",
+              "typeDescriptions": {
+                "typeIdentifier": "t_mapping$_t_address_$_t_struct$_IssuanceData_$12787_storage_$",
+                "typeString": "mapping(address => struct ISynthetixState.IssuanceData)"
+              },
+              "valueType": {
+                "contractScope": null,
+                "id": 12794,
+                "name": "IssuanceData",
+                "nodeType": "UserDefinedTypeName",
+                "referencedDeclaration": 12787,
+                "src": "828:12:37",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_struct$_IssuanceData_$12787_storage_ptr",
+                  "typeString": "struct ISynthetixState.IssuanceData"
+                }
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "id": 12801,
+            "implemented": false,
+            "isConstructor": false,
+            "isDeclaredConst": true,
+            "modifiers": [],
+            "name": "debtLedgerLength",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 12797,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "893:2:37"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 12800,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 12799,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 12801,
+                  "src": "919:4:37",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 12798,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "919:4:37",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "918:6:37"
+            },
+            "scope": 12837,
+            "src": "868:57:37",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "id": 12808,
+            "implemented": false,
+            "isConstructor": false,
+            "isDeclaredConst": true,
+            "modifiers": [],
+            "name": "hasIssued",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 12804,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 12803,
+                  "name": "account",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 12808,
+                  "src": "949:15:37",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 12802,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "949:7:37",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "948:17:37"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 12807,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 12806,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 12808,
+                  "src": "989:4:37",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 12805,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "989:4:37",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "988:6:37"
+            },
+            "scope": 12837,
+            "src": "930:65:37",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "id": 12811,
+            "implemented": false,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "incrementTotalIssuerCount",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 12809,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1034:2:37"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 12810,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1045:0:37"
+            },
+            "scope": 12837,
+            "src": "1000:46:37",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "id": 12814,
+            "implemented": false,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "decrementTotalIssuerCount",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 12812,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1085:2:37"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 12813,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1096:0:37"
+            },
+            "scope": 12837,
+            "src": "1051:46:37",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "id": 12821,
+            "implemented": false,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "setCurrentIssuanceData",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 12819,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 12816,
+                  "name": "account",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 12821,
+                  "src": "1134:15:37",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 12815,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1134:7:37",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 12818,
+                  "name": "initialDebtOwnership",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 12821,
+                  "src": "1151:25:37",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 12817,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1151:4:37",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1133:44:37"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 12820,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1186:0:37"
+            },
+            "scope": 12837,
+            "src": "1102:85:37",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "id": 12826,
+            "implemented": false,
+            "isConstructor": false,
+            "isDeclaredConst": true,
+            "modifiers": [],
+            "name": "lastDebtLedgerEntry",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 12822,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1220:2:37"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 12825,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 12824,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 12826,
+                  "src": "1246:4:37",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 12823,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1246:4:37",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1245:6:37"
+            },
+            "scope": 12837,
+            "src": "1192:60:37",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "id": 12831,
+            "implemented": false,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "appendDebtLedgerValue",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 12829,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 12828,
+                  "name": "value",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 12831,
+                  "src": "1288:10:37",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 12827,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1288:4:37",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1287:12:37"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 12830,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1308:0:37"
+            },
+            "scope": 12837,
+            "src": "1257:52:37",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "id": 12836,
+            "implemented": false,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "clearIssuanceData",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 12834,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 12833,
+                  "name": "account",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 12836,
+                  "src": "1341:15:37",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 12832,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1341:7:37",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1340:17:37"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 12835,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1366:0:37"
+            },
+            "scope": 12837,
+            "src": "1314:53:37",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          }
+        ],
+        "scope": 12838,
+        "src": "25:1344:37"
+      }
+    ],
+    "src": "0:1370:37"
+  },
+  "legacyAST": {
+    "absolutePath": "/Users/hz/workspace/synthetix/contracts/interfaces/ISynthetixState.sol",
+    "exportedSymbols": {
+      "ISynthetixState": [
+        12837
+      ]
+    },
+    "id": 12838,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 12782,
+        "literals": [
+          "solidity",
+          "0.4",
+          ".25"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:37"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": false,
+        "id": 12837,
+        "linearizedBaseContracts": [
+          12837
+        ],
+        "name": "ISynthetixState",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "canonicalName": "ISynthetixState.IssuanceData",
+            "id": 12787,
+            "members": [
+              {
+                "constant": false,
+                "id": 12784,
+                "name": "initialDebtOwnership",
+                "nodeType": "VariableDeclaration",
+                "scope": 12787,
+                "src": "510:25:37",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 12783,
+                  "name": "uint",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "510:4:37",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 12786,
+                "name": "debtEntryIndex",
+                "nodeType": "VariableDeclaration",
+                "scope": 12787,
+                "src": "716:19:37",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 12785,
+                  "name": "uint",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "716:4:37",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "name": "IssuanceData",
+            "nodeType": "StructDefinition",
+            "scope": 12837,
+            "src": "142:600:37",
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "id": 12790,
+            "name": "debtLedger",
+            "nodeType": "VariableDeclaration",
+            "scope": 12837,
+            "src": "748:24:37",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_array$_t_uint256_$dyn_storage",
+              "typeString": "uint256[]"
+            },
+            "typeName": {
+              "baseType": {
+                "id": 12788,
+                "name": "uint",
+                "nodeType": "ElementaryTypeName",
+                "src": "748:4:37",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                }
+              },
+              "id": 12789,
+              "length": null,
+              "nodeType": "ArrayTypeName",
+              "src": "748:6:37",
+              "typeDescriptions": {
+                "typeIdentifier": "t_array$_t_uint256_$dyn_storage_ptr",
+                "typeString": "uint256[]"
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "id": 12792,
+            "name": "issuanceRatio",
+            "nodeType": "VariableDeclaration",
+            "scope": 12837,
+            "src": "778:25:37",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint256",
+              "typeString": "uint256"
+            },
+            "typeName": {
+              "id": 12791,
+              "name": "uint",
+              "nodeType": "ElementaryTypeName",
+              "src": "778:4:37",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint256",
+                "typeString": "uint256"
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "id": 12796,
+            "name": "issuanceData",
+            "nodeType": "VariableDeclaration",
+            "scope": 12837,
+            "src": "809:52:37",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_mapping$_t_address_$_t_struct$_IssuanceData_$12787_storage_$",
+              "typeString": "mapping(address => struct ISynthetixState.IssuanceData)"
+            },
+            "typeName": {
+              "id": 12795,
+              "keyType": {
+                "id": 12793,
+                "name": "address",
+                "nodeType": "ElementaryTypeName",
+                "src": "817:7:37",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                }
+              },
+              "nodeType": "Mapping",
+              "src": "809:32:37",
+              "typeDescriptions": {
+                "typeIdentifier": "t_mapping$_t_address_$_t_struct$_IssuanceData_$12787_storage_$",
+                "typeString": "mapping(address => struct ISynthetixState.IssuanceData)"
+              },
+              "valueType": {
+                "contractScope": null,
+                "id": 12794,
+                "name": "IssuanceData",
+                "nodeType": "UserDefinedTypeName",
+                "referencedDeclaration": 12787,
+                "src": "828:12:37",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_struct$_IssuanceData_$12787_storage_ptr",
+                  "typeString": "struct ISynthetixState.IssuanceData"
+                }
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "id": 12801,
+            "implemented": false,
+            "isConstructor": false,
+            "isDeclaredConst": true,
+            "modifiers": [],
+            "name": "debtLedgerLength",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 12797,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "893:2:37"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 12800,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 12799,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 12801,
+                  "src": "919:4:37",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 12798,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "919:4:37",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "918:6:37"
+            },
+            "scope": 12837,
+            "src": "868:57:37",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "id": 12808,
+            "implemented": false,
+            "isConstructor": false,
+            "isDeclaredConst": true,
+            "modifiers": [],
+            "name": "hasIssued",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 12804,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 12803,
+                  "name": "account",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 12808,
+                  "src": "949:15:37",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 12802,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "949:7:37",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "948:17:37"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 12807,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 12806,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 12808,
+                  "src": "989:4:37",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 12805,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "989:4:37",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "988:6:37"
+            },
+            "scope": 12837,
+            "src": "930:65:37",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "id": 12811,
+            "implemented": false,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "incrementTotalIssuerCount",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 12809,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1034:2:37"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 12810,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1045:0:37"
+            },
+            "scope": 12837,
+            "src": "1000:46:37",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "id": 12814,
+            "implemented": false,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "decrementTotalIssuerCount",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 12812,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1085:2:37"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 12813,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1096:0:37"
+            },
+            "scope": 12837,
+            "src": "1051:46:37",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "id": 12821,
+            "implemented": false,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "setCurrentIssuanceData",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 12819,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 12816,
+                  "name": "account",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 12821,
+                  "src": "1134:15:37",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 12815,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1134:7:37",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 12818,
+                  "name": "initialDebtOwnership",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 12821,
+                  "src": "1151:25:37",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 12817,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1151:4:37",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1133:44:37"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 12820,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1186:0:37"
+            },
+            "scope": 12837,
+            "src": "1102:85:37",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "id": 12826,
+            "implemented": false,
+            "isConstructor": false,
+            "isDeclaredConst": true,
+            "modifiers": [],
+            "name": "lastDebtLedgerEntry",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 12822,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1220:2:37"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 12825,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 12824,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 12826,
+                  "src": "1246:4:37",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 12823,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1246:4:37",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1245:6:37"
+            },
+            "scope": 12837,
+            "src": "1192:60:37",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "id": 12831,
+            "implemented": false,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "appendDebtLedgerValue",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 12829,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 12828,
+                  "name": "value",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 12831,
+                  "src": "1288:10:37",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 12827,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1288:4:37",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1287:12:37"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 12830,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1308:0:37"
+            },
+            "scope": 12837,
+            "src": "1257:52:37",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "id": 12836,
+            "implemented": false,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "clearIssuanceData",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 12834,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 12833,
+                  "name": "account",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 12836,
+                  "src": "1341:15:37",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 12832,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1341:7:37",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1340:17:37"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 12835,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1366:0:37"
+            },
+            "scope": 12837,
+            "src": "1314:53:37",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          }
+        ],
+        "scope": 12838,
+        "src": "25:1344:37"
+      }
+    ],
+    "src": "0:1370:37"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.4.25+commit.59dbf8f1.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "2.0.2",
+  "updatedAt": "2019-09-19T02:10:36.536Z"
+}

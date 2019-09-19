@@ -1,0 +1,224 @@
+{
+  "contractName": "IRewardsDistribution",
+  "abi": [
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "distributeRewards",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "pragma solidity 0.4.25;\n\n/**\n * @title RewardsDistribution interface\n */\ninterface IRewardsDistribution {\n    function distributeRewards(uint amount) external;\n}\n",
+  "sourcePath": "/Users/hz/workspace/synthetix/contracts/interfaces/IRewardsDistribution.sol",
+  "ast": {
+    "absolutePath": "/Users/hz/workspace/synthetix/contracts/interfaces/IRewardsDistribution.sol",
+    "exportedSymbols": {
+      "IRewardsDistribution": [
+        12603
+      ]
+    },
+    "id": 12604,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 12597,
+        "literals": [
+          "solidity",
+          "0.4",
+          ".25"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:33"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": "@title RewardsDistribution interface",
+        "fullyImplemented": false,
+        "id": 12603,
+        "linearizedBaseContracts": [
+          12603
+        ],
+        "name": "IRewardsDistribution",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": null,
+            "documentation": null,
+            "id": 12602,
+            "implemented": false,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "distributeRewards",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 12600,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 12599,
+                  "name": "amount",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 12602,
+                  "src": "137:11:33",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 12598,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "137:4:33",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "136:13:33"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 12601,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "158:0:33"
+            },
+            "scope": 12603,
+            "src": "110:49:33",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          }
+        ],
+        "scope": 12604,
+        "src": "73:88:33"
+      }
+    ],
+    "src": "0:162:33"
+  },
+  "legacyAST": {
+    "absolutePath": "/Users/hz/workspace/synthetix/contracts/interfaces/IRewardsDistribution.sol",
+    "exportedSymbols": {
+      "IRewardsDistribution": [
+        12603
+      ]
+    },
+    "id": 12604,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 12597,
+        "literals": [
+          "solidity",
+          "0.4",
+          ".25"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:33"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": "@title RewardsDistribution interface",
+        "fullyImplemented": false,
+        "id": 12603,
+        "linearizedBaseContracts": [
+          12603
+        ],
+        "name": "IRewardsDistribution",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": null,
+            "documentation": null,
+            "id": 12602,
+            "implemented": false,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "distributeRewards",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 12600,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 12599,
+                  "name": "amount",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 12602,
+                  "src": "137:11:33",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 12598,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "137:4:33",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "136:13:33"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 12601,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "158:0:33"
+            },
+            "scope": 12603,
+            "src": "110:49:33",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          }
+        ],
+        "scope": 12604,
+        "src": "73:88:33"
+      }
+    ],
+    "src": "0:162:33"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.4.25+commit.59dbf8f1.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "2.0.2",
+  "updatedAt": "2019-09-19T02:10:36.534Z"
+}

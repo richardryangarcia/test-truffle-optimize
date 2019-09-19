@@ -1,0 +1,465 @@
+{
+  "contractName": "ISynthetixEscrow",
+  "abi": [
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "account",
+          "type": "address"
+        }
+      ],
+      "name": "balanceOf",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "account",
+          "type": "address"
+        },
+        {
+          "name": "quantity",
+          "type": "uint256"
+        }
+      ],
+      "name": "appendVestingEntry",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "pragma solidity 0.4.25;\n\n/**\n * @title SynthetixEscrow interface\n */\ninterface ISynthetixEscrow {\n    function balanceOf(address account) public view returns (uint);\n    function appendVestingEntry(address account, uint quantity) public;\n}\n",
+  "sourcePath": "/Users/hz/workspace/synthetix/contracts/interfaces/ISynthetixEscrow.sol",
+  "ast": {
+    "absolutePath": "/Users/hz/workspace/synthetix/contracts/interfaces/ISynthetixEscrow.sol",
+    "exportedSymbols": {
+      "ISynthetixEscrow": [
+        12780
+      ]
+    },
+    "id": 12781,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 12765,
+        "literals": [
+          "solidity",
+          "0.4",
+          ".25"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:36"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": "@title SynthetixEscrow interface",
+        "fullyImplemented": false,
+        "id": 12780,
+        "linearizedBaseContracts": [
+          12780
+        ],
+        "name": "ISynthetixEscrow",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": null,
+            "documentation": null,
+            "id": 12772,
+            "implemented": false,
+            "isConstructor": false,
+            "isDeclaredConst": true,
+            "modifiers": [],
+            "name": "balanceOf",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 12768,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 12767,
+                  "name": "account",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 12772,
+                  "src": "121:15:36",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 12766,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "121:7:36",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "120:17:36"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 12771,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 12770,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 12772,
+                  "src": "159:4:36",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 12769,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "159:4:36",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "158:6:36"
+            },
+            "scope": 12780,
+            "src": "102:63:36",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "id": 12779,
+            "implemented": false,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "appendVestingEntry",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 12777,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 12774,
+                  "name": "account",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 12779,
+                  "src": "198:15:36",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 12773,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "198:7:36",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 12776,
+                  "name": "quantity",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 12779,
+                  "src": "215:13:36",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 12775,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "215:4:36",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "197:32:36"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 12778,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "236:0:36"
+            },
+            "scope": 12780,
+            "src": "170:67:36",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 12781,
+        "src": "69:170:36"
+      }
+    ],
+    "src": "0:240:36"
+  },
+  "legacyAST": {
+    "absolutePath": "/Users/hz/workspace/synthetix/contracts/interfaces/ISynthetixEscrow.sol",
+    "exportedSymbols": {
+      "ISynthetixEscrow": [
+        12780
+      ]
+    },
+    "id": 12781,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 12765,
+        "literals": [
+          "solidity",
+          "0.4",
+          ".25"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:36"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": "@title SynthetixEscrow interface",
+        "fullyImplemented": false,
+        "id": 12780,
+        "linearizedBaseContracts": [
+          12780
+        ],
+        "name": "ISynthetixEscrow",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": null,
+            "documentation": null,
+            "id": 12772,
+            "implemented": false,
+            "isConstructor": false,
+            "isDeclaredConst": true,
+            "modifiers": [],
+            "name": "balanceOf",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 12768,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 12767,
+                  "name": "account",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 12772,
+                  "src": "121:15:36",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 12766,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "121:7:36",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "120:17:36"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 12771,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 12770,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 12772,
+                  "src": "159:4:36",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 12769,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "159:4:36",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "158:6:36"
+            },
+            "scope": 12780,
+            "src": "102:63:36",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "id": 12779,
+            "implemented": false,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "appendVestingEntry",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 12777,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 12774,
+                  "name": "account",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 12779,
+                  "src": "198:15:36",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 12773,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "198:7:36",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 12776,
+                  "name": "quantity",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 12779,
+                  "src": "215:13:36",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 12775,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "215:4:36",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "197:32:36"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 12778,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "236:0:36"
+            },
+            "scope": 12780,
+            "src": "170:67:36",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 12781,
+        "src": "69:170:36"
+      }
+    ],
+    "src": "0:240:36"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.4.25+commit.59dbf8f1.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "2.0.2",
+  "updatedAt": "2019-09-19T02:10:36.535Z"
+}

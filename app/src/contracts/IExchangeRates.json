@@ -1,0 +1,970 @@
+{
+  "contractName": "IExchangeRates",
+  "abi": [
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "sourceCurrencyKey",
+          "type": "bytes4"
+        },
+        {
+          "name": "sourceAmount",
+          "type": "uint256"
+        },
+        {
+          "name": "destinationCurrencyKey",
+          "type": "bytes4"
+        }
+      ],
+      "name": "effectiveValue",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "currencyKey",
+          "type": "bytes4"
+        }
+      ],
+      "name": "rateForCurrency",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "currencyKeys",
+          "type": "bytes4[]"
+        }
+      ],
+      "name": "anyRateIsStale",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "currencyKey",
+          "type": "bytes4"
+        }
+      ],
+      "name": "rateIsStale",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "pragma solidity 0.4.25;\n\n/**\n * @title ExchangeRates interface\n */\ninterface IExchangeRates {\n    function effectiveValue(bytes4 sourceCurrencyKey, uint sourceAmount, bytes4 destinationCurrencyKey) public view returns (uint);\n\n    function rateForCurrency(bytes4 currencyKey) public view returns (uint);\n\n    function anyRateIsStale(bytes4[] currencyKeys) external view returns (bool);\n\n    function rateIsStale(bytes4 currencyKey) external view returns (bool);\n}",
+  "sourcePath": "/Users/hz/workspace/synthetix/contracts/interfaces/IExchangeRates.sol",
+  "ast": {
+    "absolutePath": "/Users/hz/workspace/synthetix/contracts/interfaces/IExchangeRates.sol",
+    "exportedSymbols": {
+      "IExchangeRates": [
+        12546
+      ]
+    },
+    "id": 12547,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 12512,
+        "literals": [
+          "solidity",
+          "0.4",
+          ".25"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:31"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": "@title ExchangeRates interface",
+        "fullyImplemented": false,
+        "id": 12546,
+        "linearizedBaseContracts": [
+          12546
+        ],
+        "name": "IExchangeRates",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": null,
+            "documentation": null,
+            "id": 12523,
+            "implemented": false,
+            "isConstructor": false,
+            "isDeclaredConst": true,
+            "modifiers": [],
+            "name": "effectiveValue",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 12519,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 12514,
+                  "name": "sourceCurrencyKey",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 12523,
+                  "src": "122:24:31",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes4",
+                    "typeString": "bytes4"
+                  },
+                  "typeName": {
+                    "id": 12513,
+                    "name": "bytes4",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "122:6:31",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes4",
+                      "typeString": "bytes4"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 12516,
+                  "name": "sourceAmount",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 12523,
+                  "src": "148:17:31",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 12515,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "148:4:31",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 12518,
+                  "name": "destinationCurrencyKey",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 12523,
+                  "src": "167:29:31",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes4",
+                    "typeString": "bytes4"
+                  },
+                  "typeName": {
+                    "id": 12517,
+                    "name": "bytes4",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "167:6:31",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes4",
+                      "typeString": "bytes4"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "121:76:31"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 12522,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 12521,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 12523,
+                  "src": "219:4:31",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 12520,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "219:4:31",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "218:6:31"
+            },
+            "scope": 12546,
+            "src": "98:127:31",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "id": 12530,
+            "implemented": false,
+            "isConstructor": false,
+            "isDeclaredConst": true,
+            "modifiers": [],
+            "name": "rateForCurrency",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 12526,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 12525,
+                  "name": "currencyKey",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 12530,
+                  "src": "256:18:31",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes4",
+                    "typeString": "bytes4"
+                  },
+                  "typeName": {
+                    "id": 12524,
+                    "name": "bytes4",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "256:6:31",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes4",
+                      "typeString": "bytes4"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "255:20:31"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 12529,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 12528,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 12530,
+                  "src": "297:4:31",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 12527,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "297:4:31",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "296:6:31"
+            },
+            "scope": 12546,
+            "src": "231:72:31",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "id": 12538,
+            "implemented": false,
+            "isConstructor": false,
+            "isDeclaredConst": true,
+            "modifiers": [],
+            "name": "anyRateIsStale",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 12534,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 12533,
+                  "name": "currencyKeys",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 12538,
+                  "src": "333:21:31",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_bytes4_$dyn_calldata_ptr",
+                    "typeString": "bytes4[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 12531,
+                      "name": "bytes4",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "333:6:31",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bytes4",
+                        "typeString": "bytes4"
+                      }
+                    },
+                    "id": 12532,
+                    "length": null,
+                    "nodeType": "ArrayTypeName",
+                    "src": "333:8:31",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_bytes4_$dyn_storage_ptr",
+                      "typeString": "bytes4[]"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "332:23:31"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 12537,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 12536,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 12538,
+                  "src": "379:4:31",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 12535,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "379:4:31",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "378:6:31"
+            },
+            "scope": 12546,
+            "src": "309:76:31",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "id": 12545,
+            "implemented": false,
+            "isConstructor": false,
+            "isDeclaredConst": true,
+            "modifiers": [],
+            "name": "rateIsStale",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 12541,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 12540,
+                  "name": "currencyKey",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 12545,
+                  "src": "412:18:31",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes4",
+                    "typeString": "bytes4"
+                  },
+                  "typeName": {
+                    "id": 12539,
+                    "name": "bytes4",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "412:6:31",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes4",
+                      "typeString": "bytes4"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "411:20:31"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 12544,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 12543,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 12545,
+                  "src": "455:4:31",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 12542,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "455:4:31",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "454:6:31"
+            },
+            "scope": 12546,
+            "src": "391:70:31",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "external"
+          }
+        ],
+        "scope": 12547,
+        "src": "67:396:31"
+      }
+    ],
+    "src": "0:463:31"
+  },
+  "legacyAST": {
+    "absolutePath": "/Users/hz/workspace/synthetix/contracts/interfaces/IExchangeRates.sol",
+    "exportedSymbols": {
+      "IExchangeRates": [
+        12546
+      ]
+    },
+    "id": 12547,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 12512,
+        "literals": [
+          "solidity",
+          "0.4",
+          ".25"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:31"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": "@title ExchangeRates interface",
+        "fullyImplemented": false,
+        "id": 12546,
+        "linearizedBaseContracts": [
+          12546
+        ],
+        "name": "IExchangeRates",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": null,
+            "documentation": null,
+            "id": 12523,
+            "implemented": false,
+            "isConstructor": false,
+            "isDeclaredConst": true,
+            "modifiers": [],
+            "name": "effectiveValue",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 12519,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 12514,
+                  "name": "sourceCurrencyKey",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 12523,
+                  "src": "122:24:31",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes4",
+                    "typeString": "bytes4"
+                  },
+                  "typeName": {
+                    "id": 12513,
+                    "name": "bytes4",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "122:6:31",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes4",
+                      "typeString": "bytes4"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 12516,
+                  "name": "sourceAmount",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 12523,
+                  "src": "148:17:31",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 12515,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "148:4:31",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 12518,
+                  "name": "destinationCurrencyKey",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 12523,
+                  "src": "167:29:31",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes4",
+                    "typeString": "bytes4"
+                  },
+                  "typeName": {
+                    "id": 12517,
+                    "name": "bytes4",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "167:6:31",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes4",
+                      "typeString": "bytes4"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "121:76:31"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 12522,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 12521,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 12523,
+                  "src": "219:4:31",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 12520,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "219:4:31",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "218:6:31"
+            },
+            "scope": 12546,
+            "src": "98:127:31",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "id": 12530,
+            "implemented": false,
+            "isConstructor": false,
+            "isDeclaredConst": true,
+            "modifiers": [],
+            "name": "rateForCurrency",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 12526,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 12525,
+                  "name": "currencyKey",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 12530,
+                  "src": "256:18:31",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes4",
+                    "typeString": "bytes4"
+                  },
+                  "typeName": {
+                    "id": 12524,
+                    "name": "bytes4",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "256:6:31",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes4",
+                      "typeString": "bytes4"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "255:20:31"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 12529,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 12528,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 12530,
+                  "src": "297:4:31",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 12527,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "297:4:31",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "296:6:31"
+            },
+            "scope": 12546,
+            "src": "231:72:31",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "id": 12538,
+            "implemented": false,
+            "isConstructor": false,
+            "isDeclaredConst": true,
+            "modifiers": [],
+            "name": "anyRateIsStale",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 12534,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 12533,
+                  "name": "currencyKeys",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 12538,
+                  "src": "333:21:31",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_bytes4_$dyn_calldata_ptr",
+                    "typeString": "bytes4[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 12531,
+                      "name": "bytes4",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "333:6:31",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bytes4",
+                        "typeString": "bytes4"
+                      }
+                    },
+                    "id": 12532,
+                    "length": null,
+                    "nodeType": "ArrayTypeName",
+                    "src": "333:8:31",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_bytes4_$dyn_storage_ptr",
+                      "typeString": "bytes4[]"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "332:23:31"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 12537,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 12536,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 12538,
+                  "src": "379:4:31",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 12535,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "379:4:31",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "378:6:31"
+            },
+            "scope": 12546,
+            "src": "309:76:31",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "id": 12545,
+            "implemented": false,
+            "isConstructor": false,
+            "isDeclaredConst": true,
+            "modifiers": [],
+            "name": "rateIsStale",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 12541,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 12540,
+                  "name": "currencyKey",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 12545,
+                  "src": "412:18:31",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes4",
+                    "typeString": "bytes4"
+                  },
+                  "typeName": {
+                    "id": 12539,
+                    "name": "bytes4",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "412:6:31",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes4",
+                      "typeString": "bytes4"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "411:20:31"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 12544,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 12543,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 12545,
+                  "src": "455:4:31",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 12542,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "455:4:31",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "454:6:31"
+            },
+            "scope": 12546,
+            "src": "391:70:31",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "external"
+          }
+        ],
+        "scope": 12547,
+        "src": "67:396:31"
+      }
+    ],
+    "src": "0:463:31"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.4.25+commit.59dbf8f1.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "2.0.2",
+  "updatedAt": "2019-09-19T02:10:36.533Z"
+}
